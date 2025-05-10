@@ -1,0 +1,91 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Robotic Arm API",
+    "description": "API for controlling a 3-DOF robotic arm using inverse kinematics."
+  },
+  "host": "localhost:5000",
+  "basePath": "/",
+  "schemes": ["http"],
+  "paths": {
+    "/robot/start": {
+      "post": {
+        "summary": "Move the robotic arm to a target position or set joint angles.",
+        "description": "Provide either the target position (x, y) or the joint angles (theta1, theta2, theta3) to move the robotic arm.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "x": {
+                  "type": "number",
+                  "description": "Target x-coordinate."
+                },
+                "y": {
+                  "type": "number",
+                  "description": "Target y-coordinate."
+                },
+                "theta1": {
+                  "type": "number",
+                  "description": "Angle of joint 1 in degrees."
+                },
+                "theta2": {
+                  "type": "number",
+                  "description": "Angle of joint 2 in degrees."
+                },
+                "theta3": {
+                  "type": "number",
+                  "description": "Angle of joint 3 in degrees."
+                }
+              },
+              "example": {
+                "x": 50,
+                "y": 75,
+                "theta1": null,
+                "theta2": null,
+                "theta3": null
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "input": {
+                  "type": "object"
+                },
+                "angles": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or target position unreachable.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

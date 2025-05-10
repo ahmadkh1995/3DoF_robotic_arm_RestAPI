@@ -1,0 +1,9 @@
+Flask
+Flask-Cors
+Flask-Swagger-UI
+PyQt5
+matplotlib
+numpy
+setuptools
+wheel
+cython
