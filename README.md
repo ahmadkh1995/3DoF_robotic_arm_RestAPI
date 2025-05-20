@@ -1,6 +1,6 @@
 # A simple demo of using RestAPI to control pose of robotic arm end-effector
 
-![RobotKyle](screenshot_GUI.png)
+<img src="screenshot_GUI.png" alt="3DoF_robotic_arm" width="400"/>
 
 
 This project implements a 3-DOF robotic arm simulation and control system. It provides both a REST API and a graphical user interface (GUI) for controlling and visualizing the robotic arm.
